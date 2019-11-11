@@ -37,28 +37,22 @@ window.addEventListener('keypress', function (evt) {
 function checkScore(playerScore,computerScore){
     if (playerScore > 21){
         alert("You lose fatty!\nPlayer score: "+playerScore+"\nComputer score: "+computerScore);
-        clearScore();
     }else if (playerScore === 21){
         alert("You win!\nPlayer score: "+playerScore+"\nComputer score: "+computerScore);
-        clearScore();
     }else if (computerScore > 21){
         alert("Dealer is fat! - You win!\nPlayer score: "+playerScore+"\nComputer score: "+computerScore);
-        clearScore();
     }else if (computerScore === 21){
         alert("Dealer wins!\nPlayer score: "+playerScore+"\nComputer score: "+computerScore);
-        clearScore();
     }else if (computerScore === playerScore){
         alert("Draw!"+"\nPlayer score: "+playerScore+"\nComputer score: "+computerScore);
-        clearScore();
     }else{
         if (playerScore > computerScore){
             alert("You Win!"+"\nPlayer score: "+playerScore+"\nComputer score: "+computerScore);
-            clearScore();
         }else{
             alert("You Lose!"+"\nPlayer score: "+playerScore+"\nComputer score: "+computerScore);
-            clearScore(); 
         }
     }
+    clearScore(); 
 }
 
 /**
