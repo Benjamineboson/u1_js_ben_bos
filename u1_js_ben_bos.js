@@ -72,7 +72,7 @@ function clearScore(){
 }
 
 /**
- * @desc Draws a random card, returns relevant message depending on value of param.
+ * @desc Draws a random number (1-11), adds to total score of player/computer and returns relevant message depending on value of param.
  * @param int whosTurn 
  */
 
