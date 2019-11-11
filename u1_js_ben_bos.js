@@ -5,27 +5,11 @@ var playerScore = 0;
 var computerScore = 0;
 
 window.addEventListener('keypress', function (evt) {
-    
-    // var that gives the player a random number between 1-11
-    var random = Math.floor(Math.random()*11)+1;
-    
-    // var that gives the dealer a random number between 1-11
-    var dealerRandom = Math.floor(Math.random()*11)+1;
-
-    // var used in first round when dealer draws two cards
-    var dealerRandom2 = Math.floor(Math.random()*11)+1;
-
     if (evt.code === 'KeyD') {
-        console.log('You drew a '+ random);
-        playerScore += random;
-        console.log("Player score: "+playerScore);
+        drawCard(1);
         if (computerScore === 0){
-            console.log("Dealer drew a "+ dealerRandom);
-            computerScore += dealerRandom;
-            console.log("Computer score: "+computerScore);
-            console.log("Dealer drew a "+ dealerRandom2);
-            computerScore += dealerRandom2;
-            console.log("Computer score: "+computerScore);
+            drawCard(2);
+            drawCard(2);
             if (computerScore >= 21){
                 checkScore(playerScore,computerScore);
             }
@@ -35,9 +19,7 @@ window.addEventListener('keypress', function (evt) {
     }else if (evt.code === 'KeyS'){
         console.log("Player stopped at "+ playerScore);
         if (computerScore < 17){
-            console.log("Dealer drew a "+ dealerRandom);
-            computerScore += dealerRandom;
-            console.log("Computer score: "+computerScore);
+            drawCard(2);
         }
         checkScore(playerScore,computerScore);
     }
@@ -46,13 +28,11 @@ window.addEventListener('keypress', function (evt) {
     }
 });
 
-
 /**
  * @desc Checks the current score of computer and player. Alerts result at end of game round. 
  * @param int playerScore
  * @param int computerScore
  */
-
 
 function checkScore(playerScore,computerScore){
     if (playerScore > 21){
@@ -81,11 +61,9 @@ function checkScore(playerScore,computerScore){
     }
 }
 
-
 /**
  * @desc Resets player's and computer's score to zero. Clears the console log, allowing for multiple game rounds. 
  */
-
 
 function clearScore(){
     playerScore = 0;
@@ -93,4 +71,20 @@ function clearScore(){
     console.clear();
 }
 
-  
+/**
+ * @desc Draws a random card, returns relevant message depending on value of param.
+ * @param int whosTurn 
+ */
+
+function drawCard(whosTurn){
+    var random = Math.floor(Math.random()*11)+1;
+    if (whosTurn === 1){
+    console.log('You drew a '+ random);
+    playerScore += random;
+    console.log("Player score: "+playerScore);
+    }else if (whosTurn === 2){
+    console.log('Dealer drew a '+ random);
+    computerScore += random;
+    console.log("Dealer score: "+computerScore);                                             
+    }
+}  
